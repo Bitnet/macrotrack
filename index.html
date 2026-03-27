@@ -708,6 +708,9 @@ const S = {
   get:(k,d=null)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},
   set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
 };
+const store=S;
+function loadDay(k){return S.get('nt_day_'+k,emptyDay());}
+function saveDay(k,d){S.set('nt_day_'+k,d);}
 
 const todayKey=()=>new Date().toISOString().split('T')[0];
 let currentDateKey=todayKey();
